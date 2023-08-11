@@ -1,27 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+
+.hoverable {
+  @apply transition duration-150 hover:opacity-70
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+input:focus {
+  @apply outline-none
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.search-input::placeholder {
+  @apply text-neutral-600
+}
+
+.product-title::before {
+  content: '';
+  background: #545454;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  transform: translateX(-100%);
+  transition: transform 200ms;
+}
+
+.product-title:hover::before {
+  transform: translateX(0);
+}
+
+.section-heading {
+  @apply text-3xl text-center font-medium mb-12
+}
+
+.container-default {
+  display: grid;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+* {
+  scroll-behavior: smooth;
 }
