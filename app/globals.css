@@ -17,6 +17,14 @@ input:focus {
   @apply text-neutral-600
 }
 
+form input {
+  @apply px-4 py-3 mt-1 transition duration-200 ring-2 ring-transparent border focus:ring-accent bg-neutral-50 focus:bg-white placeholder:text-neutral-600 block w-full
+}
+
+form label {
+  @apply font-medium
+}
+
 .product-title::before {
   content: '';
   background: #545454;
@@ -34,6 +42,10 @@ input:focus {
 
 .section-heading {
   @apply text-3xl text-center font-medium mb-12
+}
+
+.page-heading {
+  @apply text-5xl font-semibold mb-8
 }
 
 .container-default {

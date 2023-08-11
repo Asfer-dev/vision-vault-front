@@ -1,9 +1,12 @@
 import { CartContext } from "@/contexts/cartContext";
 import { IconAccount, IconCart, IconSearch } from "@/lib/icons";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import CartBox from "./CartBox";
 
 export default function HeaderIcons({ searchVisible, setSearchVisible }) {
   const { cartProducts } = useContext(CartContext);
+
+  const [cartVisible, setCartVisible] = useState(false);
 
   return (
     <ul className="flex flex-row-reverse gap-2 md:gap-6 items-center z-20">
@@ -14,7 +17,11 @@ export default function HeaderIcons({ searchVisible, setSearchVisible }) {
         </button>
       </li>
       <li className="flex items-center">
-        <button aria-label="cart" className="hoverable">
+        <button
+          onClick={() => setCartVisible((prev) => !prev)}
+          aria-label="cart"
+          className="hoverable"
+        >
           <div className="relative">
             <IconCart size="w-6 h-6" />
             <div className="absolute bg-black text-white font-semibold -top-2 -right-2 h-5 w-5 flex justify-center items-center rounded-full text-sm">
@@ -23,6 +30,7 @@ export default function HeaderIcons({ searchVisible, setSearchVisible }) {
           </div>
           <span className="sr-only">Cart</span>
         </button>
+        <CartBox cartVisible={cartVisible} setCartVisible={setCartVisible} />
       </li>
       <li className="flex items-center">
         <button

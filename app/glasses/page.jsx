@@ -12,7 +12,7 @@ export default async function Products() {
   const products = await fetchAllProducts();
   return (
     <main className="py-24 container-default">
-      <h1 className="text-5xl font-semibold mb-8">Glasses</h1>
+      <h1 className="page-heading">Glasses</h1>
       <div className="grid md:grid-cols-3 gap-4 md:gap-8">
         {products.map((product) => (
           <ProductCard product={product} />

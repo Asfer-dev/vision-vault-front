@@ -34,7 +34,7 @@ export default function CartPage() {
   if (loading) {
     return (
       <div className="py-24 container-default">
-        <h1 className="text-5xl font-semibold mb-8">Your Cart</h1>
+        <h1 className="page-heading">Your Cart</h1>
         <div className="p-8 rounded-md text-center">
           <p className="text-xl mb-8">Loading Cart</p>
         </div>
@@ -45,7 +45,7 @@ export default function CartPage() {
   if (products?.length > 0) {
     return (
       <div className="py-24 container-default">
-        <h1 className="text-5xl font-semibold mb-8">Your Cart</h1>
+        <h1 className="page-heading">Your Cart</h1>
         <div>
           {products?.map((product) => {
             const quantity = cartProducts.filter(
@@ -85,13 +85,19 @@ export default function CartPage() {
             );
           })}
         </div>
-        <div className="flex justify-center items-center">
+        <div className="flex justify-between items-center">
           <button
             onClick={clearCart}
             className="py-3 px-12 font-medium border-2 border-red-400 hover:bg-red-400 hover:text-white transition duration-200"
           >
             Clear Cart
           </button>
+          <Link
+            href={"/checkout"}
+            className="px-16 py-4 ring-2 ring-neutral-300 bg-neutral-800 hover:bg-black text-white transition duration-200"
+          >
+            CHECKOUT
+          </Link>
         </div>
       </div>
     );
@@ -99,7 +105,7 @@ export default function CartPage() {
 
   return (
     <div className="py-24 container-default">
-      <h1 className="text-5xl font-semibold mb-8">Your Cart</h1>
+      <h1 className="page-heading">Your Cart</h1>
       <div className="p-8 bg-neutral-100 rounded-md text-center">
         <p className="text-xl mb-8">Your cart is empty</p>
         <p>
