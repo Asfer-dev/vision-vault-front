@@ -94,7 +94,7 @@ export default function CartPage() {
           </button>
           <Link
             href={"/checkout"}
-            className="px-16 py-4 ring-2 ring-neutral-300 bg-neutral-800 hover:bg-black text-white transition duration-200"
+            className="px-16 py-4 ring-2 font-semibold ring-neutral-300 bg-neutral-800 hover:bg-black text-white transition duration-200"
           >
             CHECKOUT
           </Link>

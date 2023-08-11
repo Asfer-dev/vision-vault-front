@@ -11,7 +11,7 @@ export default function ProductCard({ product }) {
   return (
     <div className="flex justify-center">
       <div className="hover:shadow-lg shadow transition duration-200 w-[300px] pb-4 flex flex-col gap-4">
-        <Link href={"#"}>
+        <Link href={"/glasses/" + product._id}>
           <img
             src={product.photos[0]}
             className="w-[300px] hover:scale-105 transition duration-200"
@@ -19,7 +19,7 @@ export default function ProductCard({ product }) {
         </Link>
 
         <div className="px-3 relative">
-          <Link className="flex" href={"#"}>
+          <Link className="flex" href={"/glasses/" + product._id}>
             <h3 className="product-title font-medium transition duration-200 relative overflow-hidden">
               {product.title}
             </h3>

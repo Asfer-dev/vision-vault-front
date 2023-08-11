@@ -1,11 +1,12 @@
 "use client";
 
 import { CartContext } from "@/contexts/cartContext";
+import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 export default function Checkout() {
-  const { cartProducts } = useContext(CartContext);
+  const { cartProducts, clearCart } = useContext(CartContext);
 
   const [shippingInfo, setShippingInfo] = useState({
     name: "",
@@ -17,6 +18,24 @@ export default function Checkout() {
   });
   const [loading, setLoading] = useState(false);
 
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchCartProducts = async () => {
+      try {
+        const response = await fetch("/api/cartproducts", {
+          method: "POST",
+          body: JSON.stringify({ ids: cartProducts }),
+        });
+        const data = await response.json();
+        setProducts(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchCartProducts();
+  }, [cartProducts]);
+
   const router = useRouter();
   const success = useSearchParams().get("success");
 
@@ -24,10 +43,16 @@ export default function Checkout() {
     return (
       <main className="py-24 container-default">
         <h1 className="page-heading">Order Placed</h1>
-        <p>
-          Your order has been placed! <br />
-          Thanks for shopping with us
-        </p>
+        <div className="p-8 bg-neutral-100 rounded-md text-center">
+          <p className="text-xl mb-8">Your order has been placed!</p>
+          <p className="text-xl mb-8">Thanks for shopping with us :)</p>
+          <Link
+            className=" hover:text-neutral-700 hover:underline transition duration-200"
+            href={"/"}
+          >
+            Continue Shopping
+          </Link>
+        </div>
       </main>
     );
   }
@@ -44,7 +69,10 @@ export default function Checkout() {
               method: "POST",
               body: JSON.stringify({ ...shippingInfo, cartProducts }),
             });
-            if (response.ok) router.push("/checkout?success=1");
+            if (response.ok) {
+              clearCart();
+              router.push("/checkout?success=1");
+            }
           } catch (error) {
             console.log(error);
           } finally {
@@ -127,11 +155,34 @@ export default function Checkout() {
             value={shippingInfo.country}
           />
         </div>
+        <p className="mt-2">
+          You are placing order for{" "}
+          {products?.map((product, index) => {
+            const quantity = cartProducts.filter(
+              (prodId) => prodId === product._id
+            ).length;
+            if (index === products.length - 1)
+              return (
+                <span className="font-medium">
+                  {product.title} x {quantity}.
+                </span>
+              );
+            return (
+              <span className="font-medium">
+                {product.title} x {quantity},{" "}
+              </span>
+            );
+          })}
+          <br />
+          <Link className="underline hoverable" href={"/cart"}>
+            Change
+          </Link>
+        </p>
         <button
-          className="my-8 px-12 py-4 ring-2 ring-neutral-300 w-full md:w-[200px] bg-neutral-800 hover:bg-black text-white transition duration-200"
+          className="my-8 px-12 py-4 font-semibold ring-2 ring-neutral-300 w-full md:w-[250px] bg-neutral-800 hover:bg-black text-white transition duration-200"
           type="submit"
         >
-          {loading ? "SUBMIT..." : "SUBMIT"}
+          {loading ? "PLACING ORDER..." : "PLACE ORDER"}
         </button>
       </form>
     </main>
