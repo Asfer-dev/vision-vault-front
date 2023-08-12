@@ -1,3 +1,4 @@
+import Link from "next/link";
 import ProductCard from "./ProductCard";
 
 export default function LatestProducts({ products }) {
@@ -9,6 +10,12 @@ export default function LatestProducts({ products }) {
           <ProductCard product={product} key={product._id} />
         ))}
       </div>
+      <Link
+        href={"/glasses"}
+        className="px-8 mx-auto py-4 border bg-accent hover:scale-105 transition duration-200 text-center w-[250px] font-medium mt-4"
+      >
+        Explore All Glasses
+      </Link>
     </section>
   );
 }
