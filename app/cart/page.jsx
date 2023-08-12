@@ -4,10 +4,16 @@ import { CartContext } from "@/contexts/cartContext";
 import { IconTrash } from "@/lib/icons";
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
+import ClipLoader from "react-spinners/ClipLoader";
 
 export default function CartPage() {
-  const { cartProducts, addProduct, removeProduct, clearCart } =
-    useContext(CartContext);
+  const {
+    cartProducts,
+    addProduct,
+    decreaseProduct,
+    removeProduct,
+    clearCart,
+  } = useContext(CartContext);
 
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -43,12 +49,15 @@ export default function CartPage() {
     setTotal(subtotal);
   }, [cartProducts, products]);
 
+  const [confirmVisible, setConfirmVisible] = useState("");
+
   if (loading) {
     return (
       <div className="py-24 container-default">
         <h1 className="page-heading">Your Cart</h1>
         <div className="p-8 rounded-md text-center">
-          <p className="text-xl mb-8">Loading Cart</p>
+          <ClipLoader color="#444444" />
+          <p className="text-xl font-medium text-gray-700 mb-8">Loading Cart</p>
         </div>
       </div>
     );
@@ -82,7 +91,7 @@ export default function CartPage() {
                   <div className="flex flex-col items-center md:flex-row gap-4 md:gap-12">
                     <div className="flex gap-1">
                       <button
-                        onClick={() => removeProduct(product._id)}
+                        onClick={() => decreaseProduct(product._id)}
                         className="px-3 py-1 md:px-4 md:py-2 text-xl font-medium bg-neutral-100 hover:bg-neutral-200 transition duration-200"
                       >
                         -
@@ -101,10 +110,38 @@ export default function CartPage() {
                       $ {product.price * quantity}
                     </p>
                   </div>
-                  <button className="px-3 py-3 rounded-full text-red-400 hover:text-white hover:bg-red-400 transition duration-200">
-                    <IconTrash />
-                    <span className="sr-only">Remove</span>
-                  </button>
+                  <div className="relative">
+                    <button
+                      onClick={() => setConfirmVisible(product._id)}
+                      className="px-3 py-3 rounded-full text-red-400 hover:text-white hover:bg-red-400 transition duration-200"
+                    >
+                      <IconTrash />
+                      <span className="sr-only">Remove</span>
+                    </button>
+                    <div
+                      className={
+                        confirmVisible === product._id
+                          ? "absolute bg-white shadow-md -top-20 -left-12 px-4 py-2 w-[150px]"
+                          : "hidden bg-white shadow-md -top-20 -left-12 px-4 py-2 w-[150px]"
+                      }
+                    >
+                      <div>Are you sure?</div>
+                      <div className="flex gap-2 mt-1">
+                        <button
+                          onClick={() => removeProduct(product._id)}
+                          className="px-2 py-1 bg-gray-100 transition duration-200"
+                        >
+                          Yes
+                        </button>
+                        <button
+                          onClick={() => setConfirmVisible("")}
+                          className="px-2 py-1 text-white bg-neutral-800 hover:bg-black transition duration-200"
+                        >
+                          No
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <hr className="w-[80%] md:w-[700px] mx-auto border-neutral-200 my-2" />
               </div>

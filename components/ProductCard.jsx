@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useContext } from "react";
 
 export default function ProductCard({ product }) {
-  const { addProduct } = useContext(CartContext);
+  const { addProduct, setCartVisible } = useContext(CartContext);
 
   return (
     <div className="flex justify-center">
@@ -32,7 +32,10 @@ export default function ProductCard({ product }) {
           </button>
         </div>
         <button
-          onClick={() => addProduct(product._id)}
+          onClick={() => {
+            addProduct(product._id);
+            setCartVisible(true);
+          }}
           className="p-2 font-semibold border-2 border-accent hover:bg-accent w-full hover:text-white transition duration-200"
         >
           ADD TO CART

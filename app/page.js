@@ -1,3 +1,4 @@
+import CategoriesSection from "@/components/CategoriesSection";
 import FeaturedSection from "@/components/FeaturedSection";
 import LatestProducts from "@/components/LatestProducts";
 import { connectToDB } from "@/lib/database";
@@ -27,6 +28,7 @@ export default async function Home() {
   return (
     <main className="pt-20">
       <FeaturedSection />
+      <CategoriesSection />
       <LatestProducts products={products} />
     </main>
   );

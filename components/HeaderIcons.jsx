@@ -1,12 +1,12 @@
 import { CartContext } from "@/contexts/cartContext";
 import { IconAccount, IconCart, IconSearch } from "@/lib/icons";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import CartBox from "./CartBox";
 
 export default function HeaderIcons({ searchVisible, setSearchVisible }) {
-  const { cartProducts } = useContext(CartContext);
+  const { cartProducts, cartVisible, setCartVisible } = useContext(CartContext);
 
-  const [cartVisible, setCartVisible] = useState(false);
+  // const [cartVisible, setCartVisible] = useState(false);
 
   return (
     <ul className="flex flex-row-reverse gap-2 md:gap-6 items-center z-20">

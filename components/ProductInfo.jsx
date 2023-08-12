@@ -22,6 +22,11 @@ export default function ProductInfo({ product }) {
     setDimensions(frameSize);
   }, [product]);
 
+  const [addedToCart, setAddedToCart] = useState(false);
+
+  const btnCartStyles =
+    "p-3 font-semibold border-2 border-accent hover:bg-accent w-full hover:text-white transition duration-200 mt-6 mb-4";
+
   return (
     <div className="p-4">
       <h2 className="font-medium text-3xl mb-6">{product?.title}</h2>
@@ -41,10 +46,22 @@ export default function ProductInfo({ product }) {
       </p>
       <hr />
       <button
-        onClick={() => addProduct(product._id)}
-        className="p-3 font-semibold border-2 border-accent hover:bg-accent w-full hover:text-white transition duration-200 mt-6 mb-4"
+        onClick={() => {
+          addProduct(product._id);
+          setAddedToCart(true);
+          setTimeout(() => {
+            setAddedToCart(false);
+          }, 3000);
+        }}
+        disabled={addedToCart}
+        className={
+          addedToCart
+            ? btnCartStyles +
+              " bg-green-400 hover:bg-green-400 border-green-400 text-white"
+            : btnCartStyles
+        }
       >
-        ADD TO CART
+        {addedToCart ? "ADDED TO CART!" : "ADD TO CART"}
       </button>
       <Link href={"/cart"}>
         <button

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 
 export default function CartBox({ cartVisible, setCartVisible }) {
-  const { cartProducts, addProduct, removeProduct } = useContext(CartContext);
+  const { cartProducts, addProduct, decreaseProduct } = useContext(CartContext);
 
   const [products, setProducts] = useState([]);
 
@@ -54,7 +54,7 @@ export default function CartBox({ cartVisible, setCartVisible }) {
                   <p>${product.price * quantity}</p>
                   <div className="flex gap-1">
                     <button
-                      onClick={() => removeProduct(product._id)}
+                      onClick={() => decreaseProduct(product._id)}
                       className="px-3 py-1 text-xl font-medium bg-neutral-100 hover:bg-neutral-200 transition duration-200"
                     >
                       -
