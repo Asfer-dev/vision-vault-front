@@ -4,7 +4,7 @@ export default function CategoriesSection() {
   return (
     <section className="pt-16 container-default">
       <h1 className="section-heading">Categories</h1>
-      <div className=" flex gap-4">
+      <div className="flex flex-col md:flex-row gap-4">
         <div className="cat-container w-full relative overflow-hidden">
           <img
             className="cat-image"
