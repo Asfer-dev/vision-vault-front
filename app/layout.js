@@ -18,6 +18,14 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
+      <head>
+        <title>Vision Vault - Online Glasses Store</title>
+        <link
+          rel="icon"
+          type="image/png"
+          href="https://vision-vault.s3.eu-north-1.amazonaws.com/logo.png"
+        />
+      </head>
       <body className="font-primary">
         <CartContextProvider>
           <Header
