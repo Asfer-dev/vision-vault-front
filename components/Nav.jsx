@@ -1,13 +1,18 @@
 "use client";
 
 import { IconAccount, IconDropdown } from "@/lib/icons";
+import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function Nav({ navVisible }) {
   const [dropEye, setDropEye] = useState(false);
   const [dropSun, setDropSun] = useState(false);
   const [dropGlass, setDropGlass] = useState(false);
+
+  const { data: session } = useSession();
+  const router = useRouter();
 
   const navStyles =
     "flex items-center font-medium fixed top-0 bottom-0 right-0 left-0 transition-transform duration-500 -translate-x-full bg-accent md:bg-transparent p-8 md:p-0 md:static md:-ml-20";
@@ -104,10 +109,27 @@ export default function Nav({ navVisible }) {
         </li>
         <hr className="w-full border-black opacity-20 md:hidden" />
         <li className="w-full md:w-auto md:hidden">
-          <Link className="hoverable flex gap-2 items-center" href={"#"}>
-            <IconAccount />
+          <button
+            onClick={() => {
+              if (session) {
+                router.push("/account");
+              } else {
+                signIn("google");
+              }
+            }}
+            className="hoverable flex gap-2 items-center"
+            href={"/account"}
+          >
+            {session ? (
+              <img
+                className="w-7 h-7 rounded-full ring-2 ring-neutral-900"
+                src={session.user?.image}
+              />
+            ) : (
+              <IconAccount />
+            )}
             Account
-          </Link>
+          </button>
         </li>
       </ul>
     </nav>

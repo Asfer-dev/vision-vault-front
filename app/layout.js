@@ -6,6 +6,7 @@ import SearchBar from "@/components/SearchBar";
 import { useState } from "react";
 import { CartContextProvider } from "@/contexts/cartContext";
 import Footer from "@/components/Footer";
+import Provider from "@/components/Provider";
 
 export const metadata = {
   title: "Vision Vault - Online Glasses Store",
@@ -27,18 +28,20 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className="font-primary">
-        <CartContextProvider>
-          <Header
-            searchVisible={searchVisible}
-            setSearchVisible={setSearchVisible}
-          />
-          <SearchBar
-            searchVisible={searchVisible}
-            setSearchVisible={setSearchVisible}
-          />
-          {children}
-          <Footer />
-        </CartContextProvider>
+        <Provider>
+          <CartContextProvider>
+            <Header
+              searchVisible={searchVisible}
+              setSearchVisible={setSearchVisible}
+            />
+            <SearchBar
+              searchVisible={searchVisible}
+              setSearchVisible={setSearchVisible}
+            />
+            {children}
+            <Footer />
+          </CartContextProvider>
+        </Provider>
       </body>
     </html>
   );
