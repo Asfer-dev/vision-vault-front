@@ -30,7 +30,7 @@ export default function ProductInfo({ product }) {
           Frame Size
         </div>
         <div className="border-r border-t border-b border-neutral-200 px-4 p-2 bg-neutral-100">
-          {dimensions}
+          {dimensions === "" ? "N/A" : dimensions}
         </div>
       </div>
       <p className="font-medium text-xl mb-4">

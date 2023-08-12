@@ -25,7 +25,7 @@ export default function Header({ searchVisible, setSearchVisible }) {
   }, []);
 
   const headerStyles =
-    "fixed top-0 right-0 left-0 flex justify-between items-center px-4 md:px-12 py-4 z-20 transition duration-200 bg-accent";
+    "fixed top-0 right-0 left-0 flex justify-between items-center shadow-sm px-4 md:px-12 py-4 z-20 transition duration-200 bg-accent";
   return (
     <header
       className={

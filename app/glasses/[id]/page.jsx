@@ -22,7 +22,23 @@ export default async function ProductPage({ params }) {
         <ProductInfo product={product} />
       </section>
       <section className="mt-12">
+        <div className="mx-auto w-1/2 mb-6">
+          <hr />
+        </div>
         <h1 className="section-heading">Details</h1>
+        <table className="mx-auto -mt-4 font-medium w-full md:w-1/2 border text-gray-700">
+          {product?.properties?.map((property) => (
+            <tr
+              className="odd:bg-slate-100 even:bg-slate-50"
+              key={property.name}
+            >
+              <td className="p-3">{property.name}</td>
+              <td className="p-3 font-semibold">
+                {property.value === "" ? "N/A" : property.value}
+              </td>
+            </tr>
+          ))}
+        </table>
       </section>
     </main>
   );

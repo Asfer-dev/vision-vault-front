@@ -36,6 +36,18 @@ export default function Checkout() {
     fetchCartProducts();
   }, [cartProducts]);
 
+  const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    let subtotal = 0;
+    for (const productId of cartProducts) {
+      const price =
+        products.find((product) => product._id === productId)?.price || 0;
+      subtotal += price;
+    }
+    setTotal(subtotal);
+  }, [cartProducts, products]);
+
   const router = useRouter();
   const success = useSearchParams().get("success");
 
@@ -178,8 +190,11 @@ export default function Checkout() {
             Change
           </Link>
         </p>
+        <p className="font-medium text-xl -mt-2">
+          Total: <span className="font-semibold">${total + 10}</span>
+        </p>
         <button
-          className="my-8 px-12 py-4 font-semibold ring-2 ring-neutral-300 w-full md:w-[250px] bg-neutral-800 hover:bg-black text-white transition duration-200"
+          className="mt-2 mb-8 px-12 py-4 font-semibold ring-2 ring-neutral-300 w-full md:w-[250px] bg-neutral-800 hover:bg-black text-white transition duration-200"
           type="submit"
         >
           {loading ? "PLACING ORDER..." : "PLACE ORDER"}

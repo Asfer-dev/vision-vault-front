@@ -6,7 +6,7 @@ export default function LatestProducts({ products }) {
       <h2 className="section-heading">New Arrivals</h2>
       <div className="grid md:grid-cols-3 gap-8 justify-between">
         {products.map((product) => (
-          <ProductCard product={product} />
+          <ProductCard product={product} key={product._id} />
         ))}
       </div>
     </section>
