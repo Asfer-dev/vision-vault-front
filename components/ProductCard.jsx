@@ -10,11 +10,11 @@ export default function ProductCard({ product, wish }) {
 
   return (
     <div className="flex justify-center">
-      <div className="hover:shadow-lg border-t shadow transition duration-200 w-[300px] pb-4 flex flex-col gap-4">
+      <div className="hover:shadow-lg border shadow transition duration-200 w-[300px] pb-4 flex flex-col gap-4">
         <Link href={"/glasses/" + product._id}>
           <img
             src={product.photos[0]}
-            className="w-[300px] hover:scale-105 hover:shadow-md transition duration-200"
+            className="w-[300px] hover:scale-105 hover:shadow-md hover:border transition duration-200"
           />
         </Link>
 

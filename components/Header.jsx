@@ -8,7 +8,7 @@ import Logo from "./Logo";
 
 export default function Header({ searchVisible, setSearchVisible }) {
   const [atTop, setAtTop] = useState(true);
-  const [navVisible, setNavVisible] = useState(true);
+  const [navVisible, setNavVisible] = useState(false);
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
