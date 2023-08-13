@@ -1,11 +1,11 @@
 "use client";
 
 import { CartContext } from "@/contexts/cartContext";
-import { IconHeart } from "@/lib/icons";
 import Link from "next/link";
 import { useContext } from "react";
+import { AddToWishlistButton, RemoveFromListButton } from "./WishlistButtons";
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product, wish }) {
   const { addProduct, setCartVisible } = useContext(CartContext);
 
   return (
@@ -26,10 +26,10 @@ export default function ProductCard({ product }) {
           </Link>
 
           {/* ADD TO WISHLIST BUTTON */}
-          <button className="absolute top-0 right-2 hover:scale-110 transition duration-200">
-            <IconHeart size="w-6 h-6 text-neutral-500 hover:text-black" />
-            <span className="sr-only">Add to wishlist</span>
-          </button>
+          <AddToWishlistButton productId={product._id} />
+
+          {/* REMOVE FROM WISH LIST BUTTON */}
+          {wish && <RemoveFromListButton productId={product._id} />}
         </div>
         <button
           onClick={() => {

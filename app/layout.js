@@ -7,6 +7,7 @@ import { useState } from "react";
 import { CartContextProvider } from "@/contexts/cartContext";
 import Footer from "@/components/Footer";
 import Provider from "@/components/Provider";
+import { WishlistContextProvider } from "@/contexts/wishlistContext";
 
 export const metadata = {
   title: "Vision Vault - Online Glasses Store",
@@ -30,16 +31,18 @@ export default function RootLayout({ children }) {
       <body className="font-primary">
         <Provider>
           <CartContextProvider>
-            <Header
-              searchVisible={searchVisible}
-              setSearchVisible={setSearchVisible}
-            />
-            <SearchBar
-              searchVisible={searchVisible}
-              setSearchVisible={setSearchVisible}
-            />
-            {children}
-            <Footer />
+            <WishlistContextProvider>
+              <Header
+                searchVisible={searchVisible}
+                setSearchVisible={setSearchVisible}
+              />
+              <SearchBar
+                searchVisible={searchVisible}
+                setSearchVisible={setSearchVisible}
+              />
+              {children}
+              <Footer />
+            </WishlistContextProvider>
           </CartContextProvider>
         </Provider>
       </body>

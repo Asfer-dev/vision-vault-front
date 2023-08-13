@@ -21,6 +21,7 @@ export default function HeaderIcons({ searchVisible, setSearchVisible }) {
           <>
             <button
               onClick={() => setDropAcc((prev) => !prev)}
+              // onBlur={() => setDropAcc(false)}
               className="w-7 h-7 rounded-full overflow-hidden ring-2 ring-neutral-900"
             >
               <img src={session.user.image} />
