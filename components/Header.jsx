@@ -19,6 +19,7 @@ export default function Header({ searchVisible, setSearchVisible }) {
       }
     });
 
+    if (window.innerWidth >= 800) setNavVisible(true);
     window.addEventListener("resize", () => {
       if (window.innerWidth >= 800) setNavVisible(true);
     });
