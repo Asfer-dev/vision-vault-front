@@ -9,11 +9,11 @@ import Footer from "@/components/Footer";
 import Provider from "@/components/Provider";
 import { WishlistContextProvider } from "@/contexts/wishlistContext";
 
-export const metadata = {
-  title: "Vision Vault - Online Glasses Store",
-  description:
-    "Online store selling great quality glasses and lenses for your eyes",
-};
+// export const metadata = {
+//   title: "Vision Vault - Online Glasses Store",
+//   description:
+//     "Online store selling great quality glasses and lenses for your eyes",
+// };
 
 export default function RootLayout({ children }) {
   const [searchVisible, setSearchVisible] = useState(false);
