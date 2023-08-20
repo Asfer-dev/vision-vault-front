@@ -2,6 +2,8 @@
 
 Welcome to Vision Vault, your premier destination for eyewear enthusiasts seeking a seamless online shopping experience. Crafted using cutting-edge technology and design finesse, Vision Vault stands as a fully functional Full-Stack E-commerce store dedicated to providing a curated selection of glasses for all occasions.
 
+![home-page](screenshots/home-page.png)
+
 ## Features
 
 - **Fully Functional E-commerce Store:** Vision Vault boasts a comprehensive platform for purchasing glasses online. With intuitive navigation and a user-friendly interface, customers can effortlessly explore and find their ideal eyewear.
@@ -18,6 +20,9 @@ Welcome to Vision Vault, your premier destination for eyewear enthusiasts seekin
 
 1. Visit the Vision Vault E-commerce Store at [Vision Vault](https://vision-vault-front.vercel.app).
 2. Explore our extensive range of eyewear offerings, carefully curated for diverse tastes and preferences.
+
+ ![products-page](screenshots/cart-page.png)
+
 3. For enhanced features, create an account and log in to unlock personalized shopping experiences.
 4. Take advantage of the Wish List feature to curate a collection of your favorite glasses.
 5. For administrators, the Admin panel offers streamlined control over inventory, orders, and store management.
