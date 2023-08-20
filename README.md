@@ -16,7 +16,7 @@ Welcome to Vision Vault, your premier destination for eyewear enthusiasts seekin
 
 ## How to Experience Vision Vault
 
-1. Visit the Vision Vault E-commerce Store at [Vision Vault](https://www.vision-vault-front.vercel.app).
+1. Visit the Vision Vault E-commerce Store at [Vision Vault](https://vision-vault-front.vercel.app).
 2. Explore our extensive range of eyewear offerings, carefully curated for diverse tastes and preferences.
 3. For enhanced features, create an account and log in to unlock personalized shopping experiences.
 4. Take advantage of the Wish List feature to curate a collection of your favorite glasses.
